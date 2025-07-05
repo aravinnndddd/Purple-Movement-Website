@@ -1,7 +1,7 @@
 import html2canvas from "html2canvas";
 import { useRef } from "react";
 import styles from "./certificate.module.css";
-import logo from "../assets/images/logo_pm.png";
+import logo from "../assets/logos/logo_pm.png";
 import { FaFacebookF, FaWhatsapp, FaLinkedin } from "react-icons/fa";
 
 type CertificatePopupProps = {
@@ -33,15 +33,16 @@ const CertificatePopup: React.FC<CertificatePopupProps> = ({
   };
 
   const handleShare = (platform: string) => {
-    const shareText = `🎉 I just received a certificate for contributing to the Purple Movement! 💜\n#PurpleMovement #CertificateOfAppreciation`;
     const url = window.location.href;
     let shareUrl = "";
     if (platform === "linkedin") {
-      shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+      shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+        url
+      )}`;
     } else if (platform === "facebook") {
-      shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-    } else if (platform === "whatsapp") {
-      shareUrl = `https://wa.me/?text=${encodeURIComponent(shareText + " " + url)}`;
+      shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+        url
+      )}`;
     }
     window.open(shareUrl, "_blank");
   };
@@ -55,9 +56,11 @@ const CertificatePopup: React.FC<CertificatePopupProps> = ({
           <p className={styles.subtitle}>of Appreciation</p>
           <div className={styles.name}>{name}</div>
           <p className={styles.description}>
-            has officially joined as <span className="font-bold">{contribution}</span> Contributor to{" "}
-            <span className={styles.highlight}>The Purple Movement</span>, joining the mission to redefine norms,
-            spark bold ideas, and connect the dots that drive real change.
+            has officially joined as{" "}
+            <span className="font-bold">{contribution}</span> Contributor to{" "}
+            <span className={styles.highlight}>The Purple Movement</span>,
+            joining the mission to redefine norms, spark bold ideas, and connect
+            the dots that drive real change.
           </p>
           <p className={styles.id}>
             Unique ID: <span className="font-bold">{id}</span>
@@ -73,17 +76,28 @@ const CertificatePopup: React.FC<CertificatePopupProps> = ({
             Download Certificate
           </button>
           <div className="flex gap-4">
-            <button onClick={() => handleShare("linkedin")} className="p-3 rounded-full bg-[#e5a9ff] hover:bg-[#a675cc]">
+            <button className="p-3 rounded-full bg-[#e5a9ff] hover:bg-[#a675cc]">
+              <a href=""></a>
               <FaLinkedin className="w-5 h-5 text-white" />
             </button>
-            <button onClick={() => handleShare("facebook")} className="p-3 rounded-full bg-[#e5a9ff] hover:bg-[#a675cc]">
+            <button
+              onClick={() => handleShare("facebook")}
+              className="p-3 rounded-full bg-[#e5a9ff] hover:bg-[#a675cc]"
+            >
               <FaFacebookF className="w-5 h-5 text-[#4267B2]" />
             </button>
-            <button onClick={() => handleShare("whatsapp")} className="p-3 rounded-full bg-[#e5a9ff] hover:bg-[#a675cc]">
+
+            <a
+              className="p-3 rounded-full bg-[#e5a9ff] hover:bg-[#a675cc]"
+              href="https://chat.whatsapp.com/JfnuaMproG51BoNJZ21LNB?mode=r_c"
+            >
               <FaWhatsapp className="w-5 h-5 text-[#25D366]" />
-            </button>
+            </a>
           </div>
-          <button onClick={onClose} className="text-gray-500 hover:text-gray-700 mt-2">
+          <button
+            onClick={onClose}
+            className="text-gray-500 hover:text-gray-700 mt-2"
+          >
             Close
           </button>
         </div>
